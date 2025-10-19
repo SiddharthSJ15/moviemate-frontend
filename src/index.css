@@ -1,5 +1,46 @@
 @import "tailwindcss";
 
-body {
-  @apply bg-gray-50 text-gray-800;
+/* Define custom design tokens */
+@theme {
+  --color-primary: #1E3A8A;
+  --color-secondary: #2563EB;
+  --color-accent: #F59E0B;
+  --color-success: #10B981;
+  --color-warning: #FBBF24;
+  --color-danger: #EF4444;
+  --color-muted: #6B7280;
+  --color-card: #F3F4F6;
+
+  --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+
+  --transition-card: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Base resets and utilities */
+@layer base {
+  html {
+    font-family: system-ui, sans-serif;
+    line-height: 1.5;
+    background-color: var(--color-card);
+    color: #111;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl shadow-[var(--shadow-card)] p-4;
+    transition: var(--transition-card);
+  }
+}
+
+@layer utilities {
+  .shadow-hover:hover {
+    box-shadow: var(--shadow-hover);
+  }
 }
